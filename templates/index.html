@@ -46,14 +46,14 @@
             background-color: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .card a {
@@ -69,11 +69,70 @@
             color: #555;
         }
 
+        /* QR Code 區域 */
+        .qrcode {
+            text-align: center;
+            margin: 40px auto;
+            padding: 25px;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .qrcode h2 {
+            margin-top: 0;
+            color: #1565c0;
+            font-size: 20px;
+        }
+
+        .qrcode p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .qrcode img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
             font-size: 14px;
             color: #777;
+        }
+
+        /* 手機版 */
+        @media (max-width: 600px) {
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .qrcode {
+                margin: 30px 15px;
+            }
+
+            .qrcode img {
+                width: 160px;
+                height: 160px;
+            }
         }
     </style>
 </head>
@@ -86,6 +145,7 @@
 </header>
 
 <div class="container">
+
     <div class="card-grid">
 
         <div class="card">
@@ -114,8 +174,8 @@
         </div>
 
         <div class="card">
-            <a href="/stock">📚 多元選修課程_查詢股價</a>
-            <p>輸入股票代號（例如 2330），查詢該股票的相關資訊如前一天的收盤價</p>
+            <a href="/stock">📈 多元選修課程_查詢股價</a>
+            <p>輸入股票代號（例如 2330），查詢該股票的相關資訊如前一天的收盤價。</p>
         </div>
 
         <div class="card">
@@ -124,6 +184,21 @@
         </div>
 
     </div>
+
+</div>
+
+<!-- QR Code -->
+<div class="qrcode">
+
+    <h2>📱 我的學習歷程</h2>
+
+    <p>掃描下方 QR Code 查看我的學習歷程</p>
+
+    <img
+        src="{{ url_for('static', filename='images/qrcode.png') }}"
+        alt="學習歷程 QR Code"
+    >
+
 </div>
 
 <footer>
