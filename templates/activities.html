@@ -28,40 +28,28 @@
             display: flex;
             justify-content: center;
         }
-        /* 白色卡片主體 */
+        /* 白色卡片主體：將 max-width 從 650px 放大到 900px */
         .card {
             background-color: white;
-            padding: 25px 30px;
+            padding: 30px 35px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            max-width: 650px;
+            max-width: 900px; 
             width: 100%;
         }
         /* 小圖示與標題區域 */
         .card-title {
             display: flex;
             align-items: center;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 12px;
-        }
-        .card-title img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-        /* 副標題描述文字 */
-        .card-subtitle {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
         }
         /* 大圖片控制 */
         .main-img {
-            width: 100%;
-            height: auto;
+            width: 100%;          /* 寬度隨卡片放滿 */
+            height: auto;         /* 保持原比例放放大 */
             border-radius: 8px;
             display: block;
             margin-bottom: 25px;
