@@ -24,16 +24,16 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            max-width: 900px; /* 稍微放寬容器，讓大圖更有展現空間 */
             margin: 0 auto;
         }
-        /* 圖片美化樣式 */
+        /* 圖片放大樣式 */
         .activity-img {
-            width: 100%;          /* 寬度自動適應容器 */
-            max-height: 300px;    /* 限制最大高度 */
-            object-fit: cover;    /* 保持圖片比例填充 */
-            border-radius: 8px;   /* 圓角效果 */
-            margin-bottom: 15px;  /* 與下方表單保持距離 */
+            width: 100%;          /* 寬度佔滿容器 */
+            height: auto;         /* 高度依比例自動縮放，呈現完整大圖 */
+            max-height: none;     /* 取消高度限制以完整放大 */
+            border-radius: 8px;   /* 圖片圓角 */
+            margin-bottom: 25px;  /* 與下方問答欄保持距離 */
             display: block;
         }
     </style>
@@ -44,14 +44,17 @@
     </header>
     <section>
         <div class="form-box">
-            <!-- 引入 static/images/2121.jpg 圖片 -->
+            <!-- 1. 圖片放在最上方並放大 -->
             <img src="/static/images/2121.jpg" alt="課外活動圖片" class="activity-img">
 
+            <!-- 2. 問答欄移至最下方 -->
             <form action="/activities" method="post">
                 <label for="question">你的問題:</label><br>
-                <input type="text" id="question" name="question" value="{{ question }}"><br><br>
+                <input type="text" id="question" name="question" value="{{ question }}" style="width: 100%; box-sizing: border-box; padding: 8px; margin-top: 5px;"><br><br>
+                
                 <label for="answer">答案:</label><br>
-                <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
+                <input type="text" id="answer" name="answer" readonly value="{{ answer }}" style="width: 100%; box-sizing: border-box; padding: 8px; margin-top: 5px;"><br><br>
+                
                 <input type="submit" value="送出">
                 <input type="button" value="回首頁" onclick="window.location.href='/'">
             </form>
