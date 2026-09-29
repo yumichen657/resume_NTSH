@@ -3,38 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask a Question</title>
+    <title>課外活動</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
             color: #333;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 20px 10px;
             text-align: center;
         }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: normal;
+        }
         section {
-            margin: 20px;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
         }
-        .form-box {
+        /* 白色卡片主體 */
+        .card {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 900px; /* 稍微放寬容器，讓大圖更有展現空間 */
-            margin: 0 auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            max-width: 650px;
+            width: 100%;
         }
-        /* 圖片放大樣式 */
-        .activity-img {
-            width: 100%;          /* 寬度佔滿容器 */
-            height: auto;         /* 高度依比例自動縮放，呈現完整大圖 */
-            max-height: none;     /* 取消高度限制以完整放大 */
-            border-radius: 8px;   /* 圖片圓角 */
-            margin-bottom: 25px;  /* 與下方問答欄保持距離 */
+        /* 小圖示與標題區域 */
+        .card-title {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        .card-title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+        /* 副標題描述文字 */
+        .card-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        /* 大圖片控制 */
+        .main-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
             display: block;
+            margin-bottom: 25px;
+        }
+        /* 問答表單區域 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-group input[readonly] {
+            background-color: #f9f9f9;
+        }
+        .btn-group {
+            margin-top: 20px;
+        }
+        .btn-group input[type="submit"],
+        .btn-group input[type="button"] {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.2s;
+        }
+        .btn-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .btn-group input[type="button"] {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .btn-group input[type="button"]:hover {
+            background-color: #d5d5d5;
         }
     </style>
 </head>
@@ -43,20 +121,31 @@
         <h1>課外活動</h1>
     </header>
     <section>
-        <div class="form-box">
-            <!-- 1. 圖片放在最上方並放大 -->
-            <img src="/static/images/2121.jpg" alt="課外活動圖片" class="activity-img">
+        <div class="card">
+            <!-- 小圖示與主標題 -->
+            <div class="card-title">
+                🪴 社團成果：藝術創作
+            </div>
+            
+            <!-- 大圖片 -->
+            <img src="/static/images/2121.jpg" alt="社團成果照片" class="main-img">
 
-            <!-- 2. 問答欄移至最下方 -->
+            <!-- 問答表單 -->
             <form action="/activities" method="post">
-                <label for="question">你的問題:</label><br>
-                <input type="text" id="question" name="question" value="{{ question }}" style="width: 100%; box-sizing: border-box; padding: 8px; margin-top: 5px;"><br><br>
-                
-                <label for="answer">答案:</label><br>
-                <input type="text" id="answer" name="answer" readonly value="{{ answer }}" style="width: 100%; box-sizing: border-box; padding: 8px; margin-top: 5px;"><br><br>
-                
-                <input type="submit" value="送出">
-                <input type="button" value="回首頁" onclick="window.location.href='/'">
+                <div class="form-group">
+                    <label for="question">你的問題：</label>
+                    <input type="text" id="question" name="question" value="{{ question }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="answer">答案：</label>
+                    <input type="text" id="answer" name="answer" readonly value="{{ answer }}">
+                </div>
+
+                <div class="btn-group">
+                    <input type="submit" value="送出">
+                    <input type="button" value="回首頁" onclick="window.location.href='/'">
+                </div>
             </form>
         </div>
     </section>
