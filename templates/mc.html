@@ -1,193 +1,186 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鳴潮遊戲與策略探索 - 陳奕宇</title>
-
+    <title>鳴潮 (Wuthering Waves) - 官方資訊站</title>
     <style>
+        :root {
+            --primary-color: #00f2fe;
+            --secondary-color: #4facfe;
+            --bg-color: #0f141c;
+            --card-bg: #1a2230;
+            --text-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            font-family: "Noto Sans TC", sans-serif;
-            background: linear-gradient(135deg, #e3f2fd, #ffffff);
-            color: #333;
-        }
-
-        header {
-            background-color: #1565c0;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        header p {
-            margin-top: 10px;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
         }
 
-        .card {
-            background-color: white;
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e293b, #0f141c);
+            border-bottom: 2px solid #2a3b4c;
+            margin-bottom: 40px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: var(--card-bg);
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .card h2 {
-            margin-top: 0;
-            color: #1565c0;
-            font-size: 22px;
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 10px;
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #38bdf8;
+            border-left: 4px solid #38bdf8;
+            padding-left: 10px;
         }
 
-        .card p, .card ul {
-            line-height: 1.8;
-            font-size: 15px;
-            color: #444;
+        p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
         }
 
-        .grid-3 {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        .feature-box {
-            background-color: #f8fbfd;
-            border: 1px solid #e3f2fd;
-            border-radius: 12px;
+        .feature-card {
+            background: #111827;
             padding: 20px;
-            text-align: center;
-        }
-
-        .feature-box h3 {
-            margin-top: 0;
-            color: #1565c0;
-            font-size: 18px;
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 28px;
-            background-color: #1565c0;
-            color: white;
-            text-decoration: none;
             border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
+            border: 1px solid #334155;
         }
 
-        .btn-back:hover {
-            background-color: #0d47a1;
-            transform: translateY(-2px);
+        .feature-card h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
         }
 
-        .text-center {
+        /* 按鈕群組樣式 */
+        .btn-container {
             text-align: center;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* 控制兩個按鈕之間的間距 */
+        }
+
+        a.btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #0f141c;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        /* 讓官方網站按鈕稍微做一點視覺區隔（可選，目前採用相同風格） */
+        a.btn.secondary-btn {
+            background: linear-gradient(135deg, #334155, #1e293b);
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+
+        a.btn:hover, a.btn.secondary-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #777;
-        }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 30px 15px;
-            }
-
-            .container {
-                margin: 20px auto;
-                padding: 15px;
-            }
-
-            .card {
-                padding: 20px;
-            }
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 0.9rem;
         }
     </style>
 </head>
-
 <body>
 
-    <header>
-        <h1>🌊 鳴潮 (Wuthering Waves)</h1>
-        <p>開放世界探索、動作戰鬥機制與角色培育策略</p>
-    </header>
-
     <div class="container">
+        <!-- 網頁標頭 -->
+        <header>
+            <h1>鳴潮 (Wuthering Waves)</h1>
+            <p class="subtitle">探索充滿危機與未知的開放世界動作遊戲</p>
+        </header>
 
-        <!-- 專案簡介 -->
-        <div class="card">
-            <h2>📌 探索動機與心得</h2>
-            <p>
-                《鳴潮》是一款以流暢動作戰鬥與高自由度開放世界為特色的作品。
-                在遊玩過程中，我除了體驗遊戲的劇情與世界觀外，也嘗試從戰術規劃、資源分配以及反應訓練等角度，深入分析遊戲內部的機制設計。
-            </p>
-        </div>
+        <!-- 遊戲簡介區 -->
+        <section>
+            <h2>關於遊戲</h2>
+            <p>《鳴潮》是由庫洛遊戲（Kuro Games）開發的開放世界動作遊戲。玩家將扮演因「鳴式」災難而甦醒的漂泊者，在歷經浩劫的全新廣闊世界中，與形形色色的共鳴者並肩作戰，對抗未知的敵人，揭開被掩蓋的歷史真相。</p>
+            <p>本作主打高自由度的動作戰鬥體驗，結合了流暢的「聲骸」吸收與變身機制、豐富的空中與地面位移技巧，帶來極具操作爽感的戰鬥快感。</p>
+        </section>
 
-        <!-- 核心分析區塊 -->
-        <div class="card">
-            <h2>💡 核心戰術與機制分析</h2>
-            <div class="grid-3">
-
-                <div class="feature-box">
-                    <h3>⚔️ 戰鬥機制與操作</h3>
-                    <p>研究極限閃避、彈刀（Parry）與變奏技能（Intro/Outro）的銜接時機，訓練即時反應與操作精準度。</p>
+        <!-- 核心特色區 -->
+        <section>
+            <h2>核心特色</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>自由探索</h3>
+                    <p>支援飛索、壁面奔跑與高速滑翔，無拘無束地穿梭於高山、廢墟與奇幻景觀之間。</p>
                 </div>
-
-                <div class="feature-box">
-                    <h3>👻 聲骸系統與數值優化</h3>
-                    <p>分析主聲骸技能與副詞條組合，針對不同角色的定位進行最優化配裝與隊伍搭配。</p>
+                <div class="feature-card">
+                    <h3>聲骸系統</h3>
+                    <p>擊敗敵人後可收集並吸收其聲骸，在戰鬥中化身為強大的怪物施展專屬技能。</p>
                 </div>
-
-                <div class="feature-box">
-                    <h3>🗺️ 地圖探索與資源規劃</h3>
-                    <p>規劃高效率的聲骸刷取路線，並在有限的體力資源下，制定核心角色的育成優先順序。</p>
+                <div class="feature-card">
+                    <h3>爽快動作</h3>
+                    <p>主打極致流暢的連招、閃避反擊與協奏能量機制，考驗操作與戰術搭配。</p>
                 </div>
-
             </div>
+        </section>
+
+        <!-- 按鈕群組：官方網站放左邊，返回首頁放右邊 -->
+        <div class="btn-container">
+            <a href="https://mc.kurogames.com/" target="_blank" class="btn secondary-btn">官方網站</a>
+            <a href="/" class="btn">返回首頁</a>
         </div>
 
-        <!-- 學習收穫與反思 -->
-        <div class="card">
-            <h2>📝 專案反思與學習收穫</h2>
-            <ul>
-                <li><strong>策略規劃能力：</strong> 根據高難度關卡（如深層塔區）的敵人特性，彈性調整隊伍陣容與輸出輪轉。</li>
-                <li><strong>資源管理概念：</strong> 評估體力與培育素材的分配，學習在有限資源下達到最大效益。</li>
-                <li><strong>專注力與抗壓性：</strong> 在高節奏戰鬥中保持冷靜判斷，提升面對複雜狀況時的決策能力。</li>
-            </ul>
-        </div>
-
-        <!-- 返回首頁按鈕 -->
-        <div class="text-center">
-            <a href="/" class="btn-back">⬅️ 返回首頁</a>
-        </div>
-
+        <footer>
+            <p>&copy; 2026 鳴潮粉絲資訊頁面. All Rights Reserved.</p>
+        </footer>
     </div>
 
-    <footer>
-        © 2026 陳奕宇 學習歷程檔案
-    </footer>
-
 </body>
-
 </html>
