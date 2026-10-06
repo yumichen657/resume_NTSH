@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 
@@ -193,6 +192,11 @@
                 <p>結合人工智慧工具，提升學習效率與創作能力。</p>
             </div>
 
+            <div class="card">
+                <a href="/wuthering-waves">🌊 鳴潮</a>
+                <p>記錄鳴潮遊戲心得、角色培養與遊戲策略。</p>
+            </div>
+
         </div>
 
 
@@ -217,28 +221,3 @@
 </body>
 
 </html>
-```
-
-這個版本的重點是：
-
-```css
-.qrcode {
-    margin: 0 auto 20px;
-}
-```
-
-而且我把 QR Code 從原本 `.container` 外面移到 **`.container` 裡面**，所以它會直接接在七個功能卡片下面，不會再被外層 `margin: 40px auto` 額外往下推。
-
-如果你還想讓 QR Code **再往上、靠近最後一張「AI應用」卡片**，可以把：
-
-```css
-margin: 0 auto 20px;
-```
-
-改成：
-
-```css
-margin: -10px auto 20px;
-```
-
-這樣會再往上 10px。
