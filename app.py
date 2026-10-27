@@ -87,7 +87,6 @@ def ai():
     return render_template('ai.html')
 
 
-# 💡 新增這段：對應鳴潮 (mc.html) 的路由
 @app.route('/mc')
 def mc():
     return render_template('mc.html')
