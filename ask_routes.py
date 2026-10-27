@@ -87,10 +87,21 @@ def ask_page():
             answer = "查無此單字"
             romanization = "-"
             example = "字典裡目前沒有這個詞，請嘗試輸入清單內的中文。"
+
+    # 【新增修改】根據選擇的語言決定標題名稱與背景色
+    if selected_lang == 'la':
+        header_title = "拉丁文字典"
+        header_color = "#3F51B5"  # 拉丁文使用藍色
+    else:
+        header_title = "韓文字典"
+        header_color = "#4CAF50"  # 韓文使用綠色
             
+    # 將 header_title 與 header_color 一併傳入前端樣版
     return render_template('ask.html', 
                            question=question, 
                            answer=answer, 
                            romanization=romanization, 
                            example=example,
-                           selected_lang=selected_lang)
+                           selected_lang=selected_lang,
+                           header_title=header_title,
+                           header_color=header_color)
