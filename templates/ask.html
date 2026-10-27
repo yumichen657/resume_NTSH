@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>韓文字典查詢</title>
+    <title>多語言字典查詢</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,7 +29,7 @@
             border-radius: 0 0 5px 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        input[type="text"], textarea {
+        input[type="text"], select, textarea {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
@@ -52,17 +52,24 @@
 <body>
     <section>
         <header>
-            <h1>韓文字典</h1>
+            <h1>多語言字典</h1>
         </header>
         <div class="form-box">
             <form action="/ask" method="post">
+                <!-- 【新增】翻譯語言切換選單 -->
+                <label for="lang">選擇目標語言:</label><br>
+                <select id="lang" name="lang">
+                    <option value="ko" {% if selected_lang == 'ko' %}selected{% endif %}>韓文 (Korean)</option>
+                    <option value="la" {% if selected_lang == 'la' %}selected{% endif %}>拉丁文 (Latin)</option>
+                </select><br><br>
+
                 <label for="question">中文:</label><br>
                 <input type="text" id="question" name="question" value="{{ question }}" placeholder="請輸入中文單字..."><br><br>
                 
-                <label for="answer">韓文:</label><br>
+                <label for="answer">翻譯結果:</label><br>
                 <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
 
-                <label for="romanization">羅馬拼音:</label><br>
+                <label for="romanization">發音/拼音:</label><br>
                 <input type="text" id="romanization" name="romanization" readonly value="{{ romanization }}"><br><br>
 
                 <label for="example">實用例句:</label><br>
