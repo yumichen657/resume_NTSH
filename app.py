@@ -1,22 +1,11 @@
 from flask import Flask, request, render_template
-import requests  # 補上股票查詢所需的 requests 套件
+import requests  # 股票查詢所需的 requests 套件
+from ask_routes import ask_bp  # 引入你剛剛獨立出來的 ask 路由藍圖
 
 app = Flask(__name__)
 
-# 建立題庫
-zh_ko_dict = {
-    "你好": "안녕하세요",
-    "안녕하세요": "你好",
-    "謝謝": "감사합니다",
-    "對不起": "죄송합니다",
-    "早安": "좋은 아침",
-    "晚安": "안녕히 주무세요",
-    "老師": "선생님",
-    "學生": "학생",
-    "朋友": "친구",
-    "家人": "가족",
-    "愛": "사랑"
-}
+# 註冊 ask 模組的藍圖
+app.register_blueprint(ask_bp)
 
 
 @app.route('/')
@@ -27,16 +16,6 @@ def index():
 @app.route('/competition')
 def competition():
     return render_template('competition.html')
-
-
-# 使用 dict 作為中韓翻譯的題庫
-@app.route('/ask', methods=['GET', 'POST'])
-def ask():
-    if request.method == 'POST':
-        question1 = request.form.get('question', '').strip()
-        answer1 = zh_ko_dict.get(question1, "抱歉，我目前沒有這個詞的韓文對應。")
-        return render_template('ask.html', question=question1, answer=answer1)
-    return render_template('ask.html', question="", answer="")
 
 
 @app.route('/activities', methods=['GET', 'POST'])
