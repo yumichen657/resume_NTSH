@@ -13,11 +13,13 @@
             padding: 20px;
         }
         header {
-            background-color: #4CAF50;
+            /* 透過後端傳入的 header_color 動態控制背景色，並加入平滑過場效果 */
+            background-color: {{ header_color }};
             color: white;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
             border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s ease;
         }
         section {
             max-width: 600px;
@@ -51,12 +53,14 @@
 </head>
 <body>
     <section>
-        <header>
-            <h1>多語言字典</h1>
+        <!-- 【已修改】這裡改用後端傳進來的變數來動態呈現標題與背景顏色 -->
+        <header style="background-color: {{ header_color }};">
+            <h1>{{ header_title }}</h1>
         </header>
+        
         <div class="form-box">
             <form action="/ask" method="post">
-                <!-- 【新增】翻譯語言切換選單 -->
+                <!-- 翻譯語言切換選單 -->
                 <label for="lang">選擇目標語言:</label><br>
                 <select id="lang" name="lang">
                     <option value="ko" {% if selected_lang == 'ko' %}selected{% endif %}>韓文 (Korean)</option>
@@ -64,7 +68,7 @@
                 </select><br><br>
 
                 <label for="question">中文:</label><br>
-                <input type="text" id="question" name="question" value="{{ question }}" placeholder="請輸入中文單字..."><br><br>
+                <input type="text" id="question" name="question" value="{{ question }}" placeholder="請輸入中文單字（如：月亮、你好）..."><br><br>
                 
                 <label for="answer">翻譯結果:</label><br>
                 <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
