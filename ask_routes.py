@@ -4,6 +4,18 @@ ask_bp = Blueprint('ask_bp', __name__)
 
 # 整合韓文與拉丁文的雙語字典資料庫
 MULTI_LANG_DB = {
+    "月亮": {
+        "ko": {
+            "text": "달",
+            "romanization": "Dal",
+            "example": "밤하늘에 밝은 달이 떠 있어요."
+        },
+        "la": {
+            "text": "Luna",
+            "romanization": "Lu-na",
+            "example": "Luna in caelo nocturno lucet."
+        }
+    },
     "你好": {
         "ko": {
             "text": "안녕하세요",
