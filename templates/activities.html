@@ -1,141 +1,42 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課外活動</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: normal;
-        }
-        section {
-            padding: 30px 15px;
-            display: flex;
-            justify-content: center;
-        }
-        /* 白色卡片主體：將 max-width 從 650px 放大到 900px */
-        .card {
-            background-color: white;
-            padding: 30px 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            max-width: 900px; 
-            width: 100%;
-        }
-        /* 小圖示與標題區域 */
-        .card-title {
-            display: flex;
-            align-items: center;
-            font-size: 22px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        /* 大圖片控制 */
-        .main-img {
-            width: 100%;          /* 寬度隨卡片放滿 */
-            height: auto;         /* 保持原比例放放大 */
-            border-radius: 8px;
-            display: block;
-            margin-bottom: 25px;
-        }
-        /* 問答表單區域 */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #444;
-        }
-        .form-group input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        .form-group input[readonly] {
-            background-color: #f9f9f9;
-        }
-        .btn-group {
-            margin-top: 20px;
-        }
-        .btn-group input[type="submit"],
-        .btn-group input[type="button"] {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            cursor: pointer;
-            margin-right: 10px;
-            transition: background-color 0.2s;
-        }
-        .btn-group input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .btn-group input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .btn-group input[type="button"] {
-            background-color: #e0e0e0;
-            color: #333;
-        }
-        .btn-group input[type="button"]:hover {
-            background-color: #d5d5d5;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>課外活動</h1>
-    </header>
-    <section>
-        <div class="card">
-            <!-- 小圖示與主標題 -->
-            <div class="card-title">
-                🪴 社團成果：藝術創作
-            </div>
-            
-            <!-- 大圖片 -->
-            <img src="/static/images/2121.jpg" alt="社團成果照片" class="main-img">
+{% extends "base.html" %}
 
-            <!-- 問答表單 -->
-            <form action="/activities" method="post">
-                <div class="form-group">
-                    <label for="question">你的問題：</label>
-                    <input type="text" id="question" name="question" value="{{ question }}">
-                </div>
+{% block title %}課外活動{% endblock %}
 
-                <div class="form-group">
-                    <label for="answer">答案：</label>
-                    <input type="text" id="answer" name="answer" readonly value="{{ answer }}">
-                </div>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/activities.css') }}">
+{% endblock %}
 
-                <div class="btn-group">
-                    <input type="submit" value="送出">
-                    <input type="button" value="回首頁" onclick="window.location.href='/'">
-                </div>
-            </form>
+{% block body %}
+<header>
+    <h1>課外活動</h1>
+</header>
+<section>
+    <div class="card">
+        <!-- 小圖示與主標題 -->
+        <div class="card-title">
+            🪴 社團成果：藝術創作
         </div>
-    </section>
-</body>
-</html>
+
+        <!-- 大圖片 -->
+        <img src="{{ url_for('static', filename='images/2121.jpg') }}" alt="社團成果照片" class="main-img">
+
+        <!-- 問答表單 -->
+        <form action="/activities" method="post">
+            <div class="form-group">
+                <label for="question">你的問題：</label>
+                <input type="text" id="question" name="question" value="{{ question }}">
+            </div>
+
+            <div class="form-group">
+                <label for="answer">答案：</label>
+                <input type="text" id="answer" name="answer" readonly value="{{ answer }}">
+            </div>
+
+            <div class="btn-group">
+                <input type="submit" value="送出">
+                <input type="button" value="回首頁" onclick="window.location.href='/'">
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{
+  "_說明": "多語言字典資料。新增單字：照下面的格式加一組「中文: {ko:{...}, la:{...}}」。ko=韓文、la=拉丁文；text=翻譯、romanization=發音、example=例句。",
+  "words": {
+    "月亮": {
+      "ko": {
+        "text": "달",
+        "romanization": "Dal",
+        "example": "밤하늘에 밝은 달이 떠 있어요."
+      },
+      "la": {
+        "text": "Luna",
+        "romanization": "Lu-na",
+        "example": "Luna in caelo nocturno lucet."
+      }
+    },
+    "你好": {
+      "ko": {
+        "text": "안녕하세요",
+        "romanization": "An-nyeong-ha-se-yo",
+        "example": "안녕하세요! 반갑습니다."
+      },
+      "la": {
+        "text": "Salve",
+        "romanization": "Sal-we",
+        "example": "Salve, amice!"
+      }
+    },
+    "謝謝": {
+      "ko": {
+        "text": "감사합니다",
+        "romanization": "Gam-sa-ham-ni-da",
+        "example": "도움을 주셔서 감사합니다."
+      },
+      "la": {
+        "text": "Gratias",
+        "romanization": "Gra-ti-as",
+        "example": "Gratias tibi ago."
+      }
+    },
+    "愛": {
+      "ko": {
+        "text": "사랑",
+        "romanization": "Sa-rang",
+        "example": "나는 너를 사랑해."
+      },
+      "la": {
+        "text": "Amor",
+        "romanization": "A-mor",
+        "example": "Amor vincit omnia."
+      }
+    },
+    "朋友": {
+      "ko": {
+        "text": "친구",
+        "romanization": "Chin-gu",
+        "example": "그는 나의 가장 좋은 친구야."
+      },
+      "la": {
+        "text": "Amicus",
+        "romanization": "A-mi-cus",
+        "example": "Amicus certus in re incerta cernitur."
+      }
+    }
+  }
+}

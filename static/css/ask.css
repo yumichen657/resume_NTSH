@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+header {
+    /* 背景色由頁面上 <header style="..."> 依語言動態設定；這裡只保留過場效果 */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s ease;
+}
+section {
+    max-width: 600px;
+    margin: 20px auto;
+}
+.form-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+input[type="submit"], input[type="button"] {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #45a049;
+}

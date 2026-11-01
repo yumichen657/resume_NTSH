@@ -1,88 +1,42 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>多語言字典查詢</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            /* 透過後端傳入的 header_color 動態控制背景色，並加入平滑過場效果 */
-            background-color: {{ header_color }};
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px 5px 0 0;
-            transition: background-color 0.3s ease;
-        }
-        section {
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .form-box {
-            background-color: white;
-            padding: 20px;
-            border-radius: 0 0 5px 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        input[type="text"], select, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            box-sizing: border-box;
-        }
-        input[type="submit"], input[type="button"] {
-            padding: 10px 15px;
-            margin-right: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover, input[type="button"]:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <section>
-        <!-- 【已修改】這裡改用後端傳進來的變數來動態呈現標題與背景顏色 -->
-        <header style="background-color: {{ header_color }};">
-            <h1>{{ header_title }}</h1>
-        </header>
-        
-        <div class="form-box">
-            <form action="/ask" method="post">
-                <!-- 翻譯語言切換選單 -->
-                <label for="lang">選擇目標語言:</label><br>
-                <select id="lang" name="lang">
-                    <option value="ko" {% if selected_lang == 'ko' %}selected{% endif %}>韓文 (Korean)</option>
-                    <option value="la" {% if selected_lang == 'la' %}selected{% endif %}>拉丁文 (Latin)</option>
-                </select><br><br>
+{% extends "base.html" %}
 
-                <label for="question">中文:</label><br>
-                <input type="text" id="question" name="question" value="{{ question }}" placeholder="請輸入中文單字（如：月亮、你好）..."><br><br>
-                
-                <label for="answer">翻譯結果:</label><br>
-                <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
+{% block title %}多語言字典查詢{% endblock %}
 
-                <label for="romanization">發音/拼音:</label><br>
-                <input type="text" id="romanization" name="romanization" readonly value="{{ romanization }}"><br><br>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ask.css') }}">
+{% endblock %}
 
-                <label for="example">實用例句:</label><br>
-                <textarea id="example" name="example" readonly rows="3">{{ example }}</textarea><br><br>
-                
-                <input type="submit" value="查詢">
-                <input type="button" value="回首頁" onclick="window.location.href='/'">
-            </form>
-        </div>
-    </section>
-</body>
-</html>
+{% block body %}
+<section>
+    <!-- 標題與背景顏色依選擇的語言而變（由 routes/dictionary.py 傳入） -->
+    <header style="background-color: {{ header_color }};">
+        <h1>{{ header_title }}</h1>
+    </header>
+
+    <div class="form-box">
+        <form action="/ask" method="post">
+            <!-- 翻譯語言切換選單 -->
+            <label for="lang">選擇目標語言:</label><br>
+            <select id="lang" name="lang">
+                <option value="ko" {% if selected_lang == 'ko' %}selected{% endif %}>韓文 (Korean)</option>
+                <option value="la" {% if selected_lang == 'la' %}selected{% endif %}>拉丁文 (Latin)</option>
+            </select><br><br>
+
+            <label for="question">中文:</label><br>
+            <input type="text" id="question" name="question" value="{{ question }}" placeholder="請輸入中文單字（如：月亮、你好）..."><br><br>
+
+            <label for="answer">翻譯結果:</label><br>
+            <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
+
+            <label for="romanization">發音/拼音:</label><br>
+            <input type="text" id="romanization" name="romanization" readonly value="{{ romanization }}"><br><br>
+
+            <label for="example">實用例句:</label><br>
+            <textarea id="example" name="example" readonly rows="3">{{ example }}</textarea><br><br>
+
+            <input type="submit" value="查詢">
+            <input type="button" value="回首頁" onclick="window.location.href='/'">
+        </form>
+    </div>
+</section>
+{% endblock %}
