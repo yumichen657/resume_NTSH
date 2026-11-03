@@ -81,7 +81,7 @@ PAGES = [
         'home': False,
     },
     {
-        'id': 'TEXT',
+        'id': 'bmi',
         'title': 'TEXT',
         'summary': 'TEXT。',
     }
