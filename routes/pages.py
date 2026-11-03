@@ -83,7 +83,6 @@ PAGES = [
     {
         'id': 'TEXT',
         'title': 'TEXT',
-        'icon': 'null',
         'summary': 'TEXT。',
     }
 ]
