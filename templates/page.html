@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{# 一般內容頁的共同版面。內容不用在這裡改，請改 content/頁面 裡對應的檔案。 #}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
+{% endblock %}
+
+{% block body %}
+<header>
+    <h1>{% if page.icon %}{{ page.icon }} {% endif %}{{ page.title }}</h1>
+    {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
+</header>
+
+<main class="container">
+    <article class="content">
+        {{ page.html | safe }}
+    </article>
+    <a class="back" href="/">← 返回首頁</a>
+</main>
+
+{% if site.footer %}<footer>{{ site.footer }}</footer>{% endif %}
+{% endblock %}
