@@ -8,12 +8,14 @@ from flask import Flask
 from routes.pages import pages_bp            # 首頁與各展示頁
 from routes.stock import stock_bp            # 多元選修：查詢股價
 from routes.dictionary import dictionary_bp  # 多元選修：多語言字典
+from routes.bmi import bmi_bp
 
 app = Flask(__name__)
 
 app.register_blueprint(pages_bp)
 app.register_blueprint(stock_bp)
 app.register_blueprint(dictionary_bp)
+app.register_blueprint(bmi_bp)
 
 
 if __name__ == '__main__':
