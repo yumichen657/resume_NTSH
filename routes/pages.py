@@ -82,8 +82,10 @@ PAGES = [
     },
     {
         'id': 'bmi',
-        'title': 'TEXT',
-        'summary': 'TEXT。',
+        'title': 'BMI 計算',
+        'icon': '⚖️',
+        'summary': '輸入身高體重，算出 BMI。',
+        'link': '/bmi',
     }
 ]
 
