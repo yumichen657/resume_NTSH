@@ -1,0 +1,13 @@
+{% extends "page.html" %}
+
+{% block content %}
+<form method="post" action="/bmi">
+    <p>身高（公分）：<input type="text" name="height" value="{{ height }}"></p>
+    <p>體重（公斤）：<input type="text" name="weight" value="{{ weight }}"></p>
+    <button type="submit">計算</button>
+</form>
+
+{% if result %}
+<h2>{{ result }}</h2>
+{% endif %}
+{% endblock %}
