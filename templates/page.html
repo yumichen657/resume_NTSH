@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{# 一般內容頁的共同版面。內容不用在這裡改，請改 content/頁面 裡對應的檔案。 #}
+{# 所有分頁共用的外框：上方標題、白色內容卡片、返回首頁、頁尾。
+   標題、圖示、簡介來自 routes/pages.py 的 PAGES 清單；
+   每一頁的內容寫在 templates/<id>.html 的 {% block content %} 裡。 #}
 
 {% block title %}{{ page.title }}{% endblock %}
 
@@ -16,7 +18,7 @@
 
 <main class="container">
     <article class="content">
-        {{ page.html | safe }}
+        {% block content %}{% endblock %}
     </article>
     <a class="back" href="/">← 返回首頁</a>
 </main>
