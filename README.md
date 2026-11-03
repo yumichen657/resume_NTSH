@@ -99,19 +99,23 @@ SITE = {
 
 ---
 
-# 給會寫程式的人看的
-
-股價、字典、鳴潮這三頁是程式功能：
+# 檔案結構
 
 ```
-app.py                 網站入口：把下面這些功能接起來
-routes/
-  pages.py             網站設定、分頁清單、首頁與各分頁
-  stock.py             查詢股價（證交所資料）
-  dictionary.py        多語言字典（中文 → 韓文 / 拉丁文 / 日文）
-data/dictionary.json   字典的單字
-templates/             網頁樣板：index（首頁）、page（分頁外框）、各分頁、ask、stock、mc
-static/css/            各頁樣式；static/images/ 圖片
+templates/   各個網頁（每一頁的內容和樣式都寫在自己的 html 裡）
+  index.html          首頁
+  page.html           所有分頁共用的外框和樣式
+  competition.html …  各分頁的內容（檔名＝PAGES 裡的 id）
+  ask.html / stock.html / mc.html   字典、股價、鳴潮
+routes/      各個網頁的處理
+  pages.py            網站設定 SITE、分頁清單 PAGES、首頁和各分頁
+  stock.py            查詢股價（證交所資料）
+  dictionary.py       多語言字典（中文 → 韓文 / 拉丁文 / 日文）
+static/      照片（放在 static/images）
+data/        字典裡的內容（dictionary.json）
+
+app.py              網站入口，把 routes 裡的處理接起來
+requirements.txt    部署時要安裝的套件
 ```
 
 本機執行：
