@@ -1,5 +1,5 @@
 {
-  "_說明": "多語言字典資料。新增單字：照下面的格式加一組「中文: {ko:{...}, la:{...}}」。ko=韓文、la=拉丁文；text=翻譯、romanization=發音、example=例句。",
+  "_說明": "多語言字典資料。新增單字：照下面的格式加一組「中文: {ko:{...}, la:{...}, ja:{...}}」。ko=韓文、la=拉丁文、ja=日文；text=翻譯、romanization=發音、example=例句。",
   "words": {
     "月亮": {
       "ko": {
@@ -11,6 +11,11 @@
         "text": "Luna",
         "romanization": "Lu-na",
         "example": "Luna in caelo nocturno lucet."
+      },
+      "ja": {
+        "text": "月（つき）",
+        "romanization": "tsuki",
+        "example": "夜空に明るい月が出ています。（夜空中掛著明亮的月亮。）"
       }
     },
     "你好": {
@@ -23,6 +28,11 @@
         "text": "Salve",
         "romanization": "Sal-we",
         "example": "Salve, amice!"
+      },
+      "ja": {
+        "text": "こんにちは",
+        "romanization": "konnichiwa",
+        "example": "こんにちは！はじめまして。（你好！初次見面。）"
       }
     },
     "謝謝": {
@@ -35,6 +45,11 @@
         "text": "Gratias",
         "romanization": "Gra-ti-as",
         "example": "Gratias tibi ago."
+      },
+      "ja": {
+        "text": "ありがとうございます",
+        "romanization": "arigatou gozaimasu",
+        "example": "手伝ってくれて、ありがとうございます。（謝謝你幫我。）"
       }
     },
     "愛": {
@@ -47,6 +62,11 @@
         "text": "Amor",
         "romanization": "A-mor",
         "example": "Amor vincit omnia."
+      },
+      "ja": {
+        "text": "愛（あい）",
+        "romanization": "ai",
+        "example": "愛はすべてに勝つ。（愛能戰勝一切。）"
       }
     },
     "朋友": {
@@ -59,6 +79,11 @@
         "text": "Amicus",
         "romanization": "A-mi-cus",
         "example": "Amicus certus in re incerta cernitur."
+      },
+      "ja": {
+        "text": "友達（ともだち）",
+        "romanization": "tomodachi",
+        "example": "彼は私の一番の友達です。（他是我最好的朋友。）"
       }
     }
   }

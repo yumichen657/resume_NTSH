@@ -13,7 +13,7 @@ CONTENT_DIR = ROOT / 'content'
 PAGES_DIR = CONTENT_DIR / '頁面'
 SETTINGS_FILE = CONTENT_DIR / '網站設定.md'
 
-# 檔名就是網址：中英文、數字、- 和 _ 都可以（建議用英文，網址比較好分享）
+# id 就是網址：中英文、數字、- 和 _ 都可以（建議用英文，網址比較好分享）
 SLUG_RE = re.compile(r'^[^\W_][\w-]*$')
 
 
@@ -73,35 +73,53 @@ def site_settings():
     }
 
 
-def load_page(slug):
-    """讀一頁。找不到或檔名不合規定就回傳 None。"""
-    if not SLUG_RE.match(slug):
-        return None
-    path = PAGES_DIR / f'{slug}.md'
-    if not path.exists():
-        return None
+def _page_from_file(path):
+    """把一個檔案讀成一頁。網址用檔案裡的 id；沒寫 id 就用檔名。"""
     meta, body = read_file(path)
+    ids = {k.lower(): v for k, v in meta.items()}
+    page_id = (ids.get('id') or '').strip().strip('/') or path.stem
+    if not SLUG_RE.match(page_id):
+        return None
+    link = (meta.get('連結') or '').strip()
     return {
-        'slug': slug,
-        'title': meta.get('標題') or slug,
+        'id': page_id,
+        'file': path.name,
+        'title': meta.get('標題') or page_id,
         'icon': meta.get('圖示', ''),
         'summary': meta.get('首頁簡介', ''),
         'order': _number(meta.get('順序', ''), 999),
         'on_home': _yes(meta.get('顯示在首頁')),
-        'link': (meta.get('連結') or '').strip() or f'/{slug}',
-        'is_link': bool((meta.get('連結') or '').strip()),
+        'link': link or f'/{page_id}',
+        'is_link': bool(link),
         'html': to_html(body),
     }
 
 
-def home_cards():
-    """首頁的卡片：content/頁面 裡每個檔案一張（檔名開頭是 _ 的不算）。"""
-    cards = []
+def all_pages():
+    """content/頁面 裡的所有分頁，依 id 整理。
+
+    id 重複時，只用檔名排在前面的那一個，並在終端機印出提醒。
+    """
+    pages = {}
     if PAGES_DIR.exists():
-        for path in PAGES_DIR.glob('*.md'):
-            if path.name.startswith('_'):
+        for path in sorted(PAGES_DIR.glob('*.md')):
+            page = _page_from_file(path)
+            if page is None:
+                print(f'[content] 略過 {path.name}：id 只能用中英文、數字、- 和 _')
                 continue
-            page = load_page(path.stem)
-            if page and page['on_home']:
-                cards.append(page)
-    return sorted(cards, key=lambda p: (p['order'], p['slug']))
+            if page['id'] in pages:
+                print(f"[content] id「{page['id']}」重複：{pages[page['id']]['file']} 和 {path.name}，只會顯示 {pages[page['id']]['file']}")
+                continue
+            pages[page['id']] = page
+    return pages
+
+
+def load_page(page_id):
+    """用 id 找一頁，找不到回傳 None。"""
+    return all_pages().get(page_id)
+
+
+def home_cards():
+    """首頁的卡片：每個分頁一張（設定「顯示在首頁: 否」的除外）。"""
+    cards = [p for p in all_pages().values() if p['on_home']]
+    return sorted(cards, key=lambda p: (p['order'], p['id']))

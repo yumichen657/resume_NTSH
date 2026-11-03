@@ -1,4 +1,4 @@
-"""多元選修：多語言字典（中文 → 韓文 / 拉丁文）。
+"""多元選修：多語言字典（中文 → 韓文 / 拉丁文 / 日文）。
 
 單字資料放在 data/dictionary.json，新增單字只要改那個檔案，不用動程式。
 """
@@ -16,6 +16,7 @@ WORDS = json.loads(DATA_FILE.read_text(encoding='utf-8'))['words']
 LANGUAGES = {
     'ko': {'title': '韓文字典', 'color': '#4CAF50'},    # 韓文：綠色
     'la': {'title': '拉丁文字典', 'color': '#3F51B5'},  # 拉丁文：藍色
+    'ja': {'title': '日文字典', 'color': '#C62828'},    # 日文：紅色
 }
 DEFAULT_LANG = 'ko'
 

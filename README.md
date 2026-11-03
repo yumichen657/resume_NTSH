@@ -11,25 +11,24 @@
 
 ```
 content/
-  網站設定.md        ← 首頁的大標題、副標題、頁尾
+  網站設定.md              ← 首頁的大標題、副標題、頁尾
   頁面/
-    competition.md   ← 競賽經驗（網址 /competition）
-    activities.md    ← 課外活動
-    leadership.md    ← 幹部經驗
-    club.md          ← 社團經驗
-    ai.md            ← AI應用
-    electives.md     ← 多元選修課程（目前沒顯示在首頁）
-    ask.md           ← 首頁的「字典」卡片
-    stock.md         ← 首頁的「查詢股價」卡片
-    mc.md            ← 首頁的「鳴潮」卡片
-    _範本.md          ← 新增頁面時複製用
+    競賽經驗.md            ← id: competition（網址 /competition）
+    課外活動.md            ← id: activities
+    幹部經驗.md            ← id: leadership
+    社團經驗.md            ← id: club
+    AI應用.md              ← id: ai
+    多元選修課程.md        ← id: electives（目前沒顯示在首頁）
+    多元選修_字典.md       ← 首頁的「字典」卡片
+    多元選修_查詢股價.md   ← 首頁的「查詢股價」卡片
+    鳴潮.md                ← 首頁的「鳴潮」卡片
 ```
 
-**一個檔案＝一頁，檔名＝網址。** 例如 `club.md` 就是網站上的 `/club`。
+**一個檔案＝一頁，網址＝檔案裡的 id。** 例如寫 `id: club`，網址就是 `/club`。檔名隨便取，只是方便你找。
 
 ## 1. 改某一頁的文字
 
-1. 在 GitHub 打開 `content` → `頁面` → 點你要改的檔案（例如 `club.md`）
+1. 在 GitHub 打開 `content` → `頁面` → 點你要改的檔案（例如 `社團經驗.md`）
 2. 點右上角的 **鉛筆圖示 ✏️**
 3. 直接改字
 4. 點右上角綠色的 **Commit changes…**，再按一次 **Commit changes**
@@ -38,6 +37,7 @@ content/
 
 ```
 ---
+id: club
 標題: 社團經驗
 圖示: 🎵
 首頁簡介: 透過社團活動探索興趣與培養責任感。
@@ -51,6 +51,7 @@ content/
 
 | 設定 | 作用 |
 |---|---|
+| id | 這一頁的網址，`id: club` 就是 `/club`。用英文、數字、`-`；**每一頁的 id 不能重複** |
 | 標題 | 這一頁最上面的大字，也是首頁卡片的標題 |
 | 圖示 | 標題前面的表情符號，可以不填 |
 | 首頁簡介 | 首頁卡片上的一句話，也會顯示在這一頁的標題下面 |
@@ -60,13 +61,25 @@ content/
 
 ## 2. 新增一頁
 
-1. 打開 `content` → `頁面` → 點 `_範本.md` → 把內容全部複製
-2. 回到 `頁面` 資料夾，點右上角 **Add file → Create new file**
-3. 檔名輸入例如 `volunteer.md`（**一定要以 `.md` 結尾**；建議用英文，網址就是 `/volunteer`）
-4. 貼上範本，改成你要的內容
-5. **Commit changes**
+1. 打開 `content` → `頁面`，點右上角 **Add file → Create new file**
+2. 檔名隨便取，例如 `志工服務.md`（**一定要以 `.md` 結尾**）
+3. 貼上這段，改成你要的內容：
 
-首頁會**自動**多一張卡片，不用改其他地方。
+```
+---
+id: volunteer
+標題: 志工服務
+圖示: 🤝
+首頁簡介: 參與社區服務，培養同理心與責任感。
+順序: 5
+---
+這裡寫這一頁的內容。
+```
+
+4. **Commit changes**
+
+網址就是 `/volunteer`（看 id），首頁會**自動**多一張卡片，不用改其他地方。
+最快的做法：直接複製一個現有的頁面，改 id 和內容。
 
 ## 3. 刪除或隱藏一頁
 
@@ -115,7 +128,7 @@ routes/
   pages.py             首頁、鳴潮頁，以及 content 裡的所有內容頁
   content.py           讀取 content 資料夾的文字檔
   stock.py             查詢股價（證交所資料）
-  dictionary.py        多語言字典（中文 → 韓文 / 拉丁文）
+  dictionary.py        多語言字典（中文 → 韓文 / 拉丁文 / 日文）
 data/dictionary.json   字典的單字
 templates/             網頁樣板（index、page、ask、stock、mc）
 static/css/            各頁樣式；static/images/ 圖片
