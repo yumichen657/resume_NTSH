@@ -80,6 +80,12 @@ PAGES = [
         'summary': '修習的多元選修課程與心得。',
         'home': False,
     },
+    {
+        'id': 'TEXT',
+        'title': 'TEXT',
+        'icon': 'TEXT',
+        'summary': 'TEXT。',
+    }
 ]
 
 # ===== 以下是程式，平常不用改 =====
